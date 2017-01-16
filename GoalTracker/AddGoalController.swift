@@ -55,18 +55,21 @@ class AddGoalController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func SubmitButtonPressed(_ sender: UIButton) {
-        
         if FIRAuth.auth()?.currentUser != nil {
-            let uid = FIRAuth.auth()?.currentUser?.uid
-            let ref = FIRDatabase.database().reference(fromURL: "https://intentiontracker-cfbda.firebaseio.com").child("users").child(uid!).child("goals")
+            
+            let dateformatter = DateFormatter()
+            dateformatter.dateStyle = DateFormatter.Style.short
+            dateformatter.timeStyle = DateFormatter.Style.short
+            let now = dateformatter.string(from: NSDate() as Date)
+            
+            let user = FIRAuth.auth()?.currentUser?.uid
+            let ref = FIRDatabase.database().reference(fromURL: "https://intentiontracker-cfbda.firebaseio.com").child("goals")
             let childRef = ref.childByAutoId()
-            let nameValue = ["name": goalTextField.text]
-            let descriptionValue = ["description": descriptionTextField.text]
-            childRef.updateChildValues(nameValue)
-            childRef.updateChildValues(descriptionValue)
+            let value = ["goalName": goalTextField.text!, "description": descriptionTextField.text!, "userID": user, "created_at": now]
+            childRef.updateChildValues(value)
             print(goalTextField.text!)
             print(descriptionTextField.text!)
-        
+            
         }
     }
 }

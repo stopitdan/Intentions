@@ -9,6 +9,7 @@
 import UIKit
 
 class Goal: NSObject {
-    var name: String?
+    var goalName: String?
     var goalDescription: String?
+    var userName: String?
 }

@@ -59,31 +59,36 @@ class DashboardController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func fetchGoal() {
         if FIRAuth.auth()?.currentUser != nil {
-            let uid = FIRAuth.auth()?.currentUser?.uid
-            FIRDatabase.database().reference(fromURL: "https://intentiontracker-cfbda.firebaseio.com").child("users").child(uid!).child("goals").observe(.childAdded, with: { (snapshot) in
-                
-                if let dictionary = snapshot.value as? [String: AnyObject] {
-                    let goal = Goal()
-                    goal.name = dictionary["name"] as! String?
-                    goal.goalDescription = dictionary["description"] as! String?
-                    self.goals.append(goal)
-                    
-//                    print(goal.name!, goal.goalDescription!)
-//                    goal.setValuesForKeys(dictionary)
-//                    print(goal.name!)
+            FIRDatabase.database().reference(fromURL: "https://intentiontracker-cfbda.firebaseio.com").child("goals").observe(.value, with: { (snapshot) in
+                for child in snapshot.children {
+                    print(child)
                 }
                 
-//                print("User found")
-                
-            }
-                , withCancel: nil)
+            }, withCancel: nil)
+            //            let uid = FIRAuth.auth()?.currentUser?.uid
+            //            FIRDatabase.database().reference(fromURL: "https://intentiontracker-cfbda.firebaseio.com").child("users").child(uid!).observe(.childAdded, with:
+            //                { (snapshot) in
+            //                    if let dictionary = snapshot.value as? [String: AnyObject] {
+            //
+            //                        let goal = Goal()
+            //                        goal.setValuesForKeys(dictionary)
+            //                        self.goals.append(goal)
+            //                        print(self.goals)
+            //                        print(dictionary)
+            //
+            //                    }
+            //                    
+            //            }
+            //                    , withCancel: nil)
+            //            }
         }
-    }
-    
+    }    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "goalCell", for: indexPath)
         let goal = goals[indexPath.row]
-        cell.textLabel?.text = goal.name
+        for goal in goals {
+        cell.textLabel?.text = goal.goalName
+        }
         return cell
     }
     
