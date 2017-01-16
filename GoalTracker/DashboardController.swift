@@ -12,7 +12,10 @@ import Firebase
 class DashboardController: UITableViewController {
     
     var goals = [Goal]()
+<<<<<<< HEAD
 
+=======
+>>>>>>> Dan
     var refHandle: UInt?
     
     override func viewDidLoad() {
@@ -21,7 +24,10 @@ class DashboardController: UITableViewController {
             self.tableView.reloadData()
         }
         fetchGoals()
+<<<<<<< HEAD
 
+=======
+>>>>>>> Dan
         print(goals)
         // Do any additional setup after loading the view.
         
@@ -63,9 +69,13 @@ class DashboardController: UITableViewController {
     }
     
     func fetchGoals() {
+<<<<<<< HEAD
 
         let ref = FIRDatabase.database().reference(fromURL: "https://intentiontracker-cfbda.firebaseio.com")
 
+=======
+        let ref = FIRDatabase.database().reference(fromURL: "https://intentiontracker-cfbda.firebaseio.com")
+>>>>>>> Dan
         refHandle = ref.child("goals").observe(.childAdded, with: { (snapshot) in
             if let dictionary = snapshot.value as? [String : AnyObject] {
                 
@@ -74,18 +84,27 @@ class DashboardController: UITableViewController {
                 let goal = Goal()
                 goal.setValuesForKeys(dictionary)
                 self.goals.append(goal)
+<<<<<<< HEAD
 
                 
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
 
+=======
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+>>>>>>> Dan
                 }
                 
             }
         })
     }
     
+<<<<<<< HEAD
 
+=======
+>>>>>>> Dan
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "goalCell", for: indexPath)
@@ -97,7 +116,10 @@ class DashboardController: UITableViewController {
             cell.textLabel?.text = goal.goalName
         }
         
+<<<<<<< HEAD
 
+=======
+>>>>>>> Dan
         return cell
         
 //        let cell = tableView.dequeueReusableCell(withIdentifier: "goalCell", for: indexPath)
