@@ -11,4 +11,5 @@ import UIKit
 class User: NSObject {
     var name: String?
     var email: String?
+    var created_at: String?
 }

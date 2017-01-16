@@ -65,7 +65,7 @@ class AddGoalController: UIViewController, UITextFieldDelegate {
             let user = FIRAuth.auth()?.currentUser?.uid
             let ref = FIRDatabase.database().reference(fromURL: "https://intentiontracker-cfbda.firebaseio.com").child("goals")
             let childRef = ref.childByAutoId()
-            let value = ["goalName": goalTextField.text!, "description": descriptionTextField.text!, "userID": user, "created_at": now]
+            let value = ["goalName": goalTextField.text!, "goalDescription": descriptionTextField.text!, "userID": user, "created_at": now]
             childRef.updateChildValues(value)
             print(goalTextField.text!)
             print(descriptionTextField.text!)

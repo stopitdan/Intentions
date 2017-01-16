@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Gkk-8E-Kyz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fti-z7-QYt">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -324,7 +324,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TRc-qa-4L0">
-                                <rect key="frame" x="127" y="573" width="120" height="55"/>
+                                <rect key="frame" x="127" y="524" width="120" height="55"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0IB-rW-f6Y" customClass="ZFRippleButton" customModule="GoalTracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="120" height="55"/>
@@ -488,7 +488,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ClR-iu-BIZ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellId" id="ClR-iu-BIZ">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ClR-iu-BIZ" id="iBm-7A-Znu">
@@ -514,6 +514,7 @@
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="subTableView" destination="tzs-xO-iri" id="M2b-P7-NA4"/>
                         <segue destination="fti-z7-QYt" kind="show" identifier="Logout" id="fPm-gw-Hhx"/>
                     </connections>
                 </viewController>
@@ -770,8 +771,8 @@
         <image name="User_000000_25" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Gub-z3-tg0"/>
         <segue reference="6BR-pU-O7H"/>
         <segue reference="7Lt-tI-ssu"/>
+        <segue reference="fPm-gw-Hhx"/>
     </inferredMetricsTieBreakers>
 </document>
