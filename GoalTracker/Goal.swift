@@ -11,5 +11,6 @@ import UIKit
 class Goal: NSObject {
     var goalName: String?
     var goalDescription: String?
-    var userName: String?
+    var userID: String?
+    var created_at: String?
 }
