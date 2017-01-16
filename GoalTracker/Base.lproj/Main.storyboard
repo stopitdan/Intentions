@@ -823,15 +823,12 @@
         <image name="User_000000_25" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-<<<<<<< HEAD
 
-        <segue reference="7Lt-tI-ssu"/>
         <segue reference="6BR-pU-O7H"/>
 
-=======
-        <segue reference="7Lt-tI-ssu"/>
+
         <segue reference="6BR-pU-O7H"/>
->>>>>>> Dan
+
         <segue reference="fPm-gw-Hhx"/>
     </inferredMetricsTieBreakers>
 </document>
