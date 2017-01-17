@@ -49,11 +49,16 @@ class LoginController: UIViewController, NavgationTransitionable, BWWalkthroughV
         super.viewDidLoad()
         self.emailTextField.delegate = self
         self.passwordTextField.delegate = self
-        
-        if LoginController.count < 2 {
-            showWalkthrough()
+        if FIRAuth.auth()?.currentUser == nil {
+            if LoginController.count < 2 {
+                showWalkthrough()
+            }
         }
-        
+        else {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "TabBarHome")
+            self.present(controller, animated: false, completion: nil)
+        }
         setFormAttributes()
         changePlaceholderColors()
         self.hideKeyboardWhenTappedAround()

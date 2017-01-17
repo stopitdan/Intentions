@@ -30,7 +30,7 @@ class AddGoalController: UIViewController, UITextFieldDelegate {
     func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
         if recognizer.state == .recognized {
             setTabBarVisible(visible: true, animated: true)
-            print("Screen edge swiped!")
+            print("Screen edge swiped, ya cunt!")
         }
     }
     

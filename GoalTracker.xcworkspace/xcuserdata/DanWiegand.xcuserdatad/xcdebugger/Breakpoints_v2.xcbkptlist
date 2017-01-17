@@ -9,13 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GoalTracker/DashboardController.swift"
-            timestampString = "506240996.081396"
+            filePath = "GoalTracker/GoalDetailsController.swift"
+            timestampString = "506303713.160552"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "fetchUsers()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

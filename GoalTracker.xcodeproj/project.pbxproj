@@ -23,6 +23,7 @@
 		0692E1C01E2C26CA00849066 /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0692E1BE1E2C26CA00849066 /* DashboardController.swift */; };
 		0692E1C11E2C26CA00849066 /* AddGoalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0692E1BF1E2C26CA00849066 /* AddGoalController.swift */; };
 		58C669FB1E2C722E00A76F86 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C669FA1E2C722E00A76F86 /* User.swift */; };
+		58C669FF1E2D6DDD00A76F86 /* GoalDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C669FE1E2D6DDD00A76F86 /* GoalDetailsController.swift */; };
 		E733888EB6D38A2BC5127252 /* Pods_GoalTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFA8E9807DE32CD6DDC095DF /* Pods_GoalTracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		0692E1BE1E2C26CA00849066 /* DashboardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
 		0692E1BF1E2C26CA00849066 /* AddGoalController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGoalController.swift; sourceTree = "<group>"; };
 		58C669FA1E2C722E00A76F86 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		58C669FE1E2D6DDD00A76F86 /* GoalDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalDetailsController.swift; sourceTree = "<group>"; };
 		5F4C0B22F8ACAC359E50562D /* Pods-GoalTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoalTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoalTracker/Pods-GoalTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		AFA8E9807DE32CD6DDC095DF /* Pods_GoalTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoalTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C624A043C681CC1B04F28CE6 /* Pods-GoalTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoalTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-GoalTracker/Pods-GoalTracker.release.xcconfig"; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				0692E1AB1E2C25C100849066 /* WalkthroughController.swift */,
 				0692E1BE1E2C26CA00849066 /* DashboardController.swift */,
 				0692E1BF1E2C26CA00849066 /* AddGoalController.swift */,
+				58C669FE1E2D6DDD00A76F86 /* GoalDetailsController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				0692E1B61E2C25C100849066 /* ProfileController.swift in Sources */,
 				0692E1AD1E2C25C100849066 /* AppDelegate.swift in Sources */,
 				0692E1B91E2C25C100849066 /* WalkthroughController.swift in Sources */,
+				58C669FF1E2D6DDD00A76F86 /* GoalDetailsController.swift in Sources */,
 				0692E1B71E2C25C100849066 /* RegisterController.swift in Sources */,
 				0692E1C11E2C26CA00849066 /* AddGoalController.swift in Sources */,
 				0692E1B51E2C25C100849066 /* LoginController.swift in Sources */,
