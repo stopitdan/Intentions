@@ -9,24 +9,30 @@
 import UIKit
 import Firebase
 
-class DashboardController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class DashboardController: UITableViewController {
     
+    
+    @IBOutlet weak var swipeView: UIView!
+    
+    let currUser = FIRAuth.auth()?.currentUser?.uid
     var goals = [Goal]()
-    var userList = [User]()
-    var refHandle: UInt!
-    
-    @IBOutlet weak var subTableView: UITableView!
+    var refHandle: UInt?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
         fetchGoals()
-        
-        
-        
+
         print(goals)
         // Do any additional setup after loading the view.
+        self.tableView.tableFooterView = UIView()
+        
+        let swipeUp = UISwipeGestureRecognizer(target: swipeView, action: #selector(respondToSwipeGestureForAdd))
+        swipeUp.direction = UISwipeGestureRecognizerDirection.up
+        self.view.addGestureRecognizer(swipeUp)
         
         let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(self.screenEdgeSwiped))
         edgePan.edges = .bottom
@@ -36,6 +42,10 @@ class DashboardController: UIViewController, UITableViewDelegate, UITableViewDat
         
         view.addGestureRecognizer(swipeDown)
         view.addGestureRecognizer(edgePan)
+    }
+    
+    func respondToSwipeGestureForAdd(gesture: UIGestureRecognizer) {
+            print("You got me")
     }
     
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
@@ -66,62 +76,52 @@ class DashboardController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func fetchGoals() {
-        var ref: FIRDatabaseReference = FIRDatabase.database().reference(fromURL: "https://intentiontracker-cfbda.firebaseio.com")
-
+        
+        
+        let ref = FIRDatabase.database().reference(fromURL: "https://intentiontracker-cfbda.firebaseio.com")
+        
+        
         refHandle = ref.child("goals").observe(.childAdded, with: { (snapshot) in
             if let dictionary = snapshot.value as? [String : AnyObject] {
                 
-                print(dictionary)
+                //                print(dictionary)
                 
                 let goal = Goal()
+                
+                
                 goal.setValuesForKeys(dictionary)
-                self.goals.append(goal)
+                for item in dictionary {
+                    print(item.key)
+                    if item.key == "userID" {
+                        if item.value as! String == self.currUser! {
+                            self.goals.append(goal)
+                        }
+                        
+                    }
+                }
+                
                 DispatchQueue.main.async {
-                    self.subTableView.reloadData()
+                    self.tableView.reloadData()
+                    
                 }
                 
             }
         })
     }
     
-    func fetchGoal() {
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "goalCell", for: indexPath)
+        tableView.separatorInset = UIEdgeInsetsMake( 0, 0, 0, 0)
+//        cell.layoutMargins = UIEdgeInsetsMake(0, 0, 0, 0)
         
         
+        let goal = goals[(goals.count - 1 - indexPath.row)]
+        if goal.userID == currUser {
+            cell.textLabel?.text = goal.goalName
+        }
         
-        
-        
-        
-        
-//        if FIRAuth.auth()?.currentUser != nil {
-//            let ref = FIRDatabase.database().reference(fromURL: "https://intentiontracker-cfbda.firebaseio.com")
-//                ref.child("goals").observe(.value, with: { (snapshot) in
-//                for child in snapshot.children {
-//                    print(child)
-//                }
-//                
-//            }, withCancel: nil)
-            //            let uid = FIRAuth.auth()?.currentUser?.uid
-            //            FIRDatabase.database().reference(fromURL: "https://intentiontracker-cfbda.firebaseio.com").child("users").child(uid!).observe(.childAdded, with:
-            //                { (snapshot) in
-            //                    if let dictionary = snapshot.value as? [String: AnyObject] {
-            //
-            //                        let goal = Goal()
-            //                        goal.setValuesForKeys(dictionary)
-            //                        self.goals.append(goal)
-            //                        print(self.goals)
-            //                        print(dictionary)
-            //
-            //                    }
-            //                    
-            //            }
-            //                    , withCancel: nil)
-            //            }
-//        }
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cellId")
-        cell.textLabel?.text = goals[indexPath.row].goalName
         return cell
         
 //        let cell = tableView.dequeueReusableCell(withIdentifier: "goalCell", for: indexPath)
@@ -132,7 +132,7 @@ class DashboardController: UIViewController, UITableViewDelegate, UITableViewDat
 //        return cell
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return goals.count
     }
 

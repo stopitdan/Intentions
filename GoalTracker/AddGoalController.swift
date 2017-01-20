@@ -14,6 +14,10 @@ class AddGoalController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var goalTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
     
+    @IBAction func submitButtonPressed(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
+    
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         if tabBarIsVisible() == true {
             setTabBarVisible(visible: false, animated: true)
